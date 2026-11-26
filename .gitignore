@@ -1,0 +1,22 @@
+
+# Python virtual environment
+.venv/
+venv/
+.venv.zip
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Execution results and archives
+results/
+results.zip
+
+# Model archives
+models.zip
+
+# Environment variables
+.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
