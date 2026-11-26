@@ -1,184 +1,132 @@
-# Aspect-Based Sentiment Analysis of Reddit Discussions
+# Aspect-Based Sentiment Analysis of Reddit Discussions Using Aspect-Weighted Feature Fusion (AWFF)
 
-## 1. Project Overview
+## 📌 Project Overview
 
-This research project focuses on **Aspect-Based Sentiment Analysis (ABSA)** of Reddit gaming discussions using Machine Learning and Deep Learning techniques.
+This project focuses on performing Aspect-Based Sentiment Analysis (ABSA) on Reddit discussions using Natural Language Processing (NLP) and Machine Learning techniques.
 
-The main objective is to identify aspects discussed in Reddit comments and classify the associated sentiment into three categories:
+Unlike traditional sentiment analysis, which assigns a single sentiment to an entire comment, ABSA identifies individual aspects and determines the sentiment associated with each aspect.
+
+The project proposes an **Aspect-Weighted Feature Fusion (AWFF)** approach that combines multiple textual, linguistic, and contextual features to improve aspect-level sentiment classification.
+
+The system explores traditional Machine Learning and Deep Learning models to classify sentiments into three categories:
 
 - Positive
 - Negative
 - Neutral
 
-The project proposes an **Aspect-Weighted Feature Fusion (AWFF)** approach to improve sentiment classification by combining textual features with additional linguistic and sentiment-related features.
+## 🎯 Objectives
 
-## 2. Problem Statement
+- Analyze Reddit discussions using NLP techniques.
+- Extract meaningful aspects from user comments.
+- Identify sentiment polarity associated with individual aspects.
+- Develop an Aspect-Weighted Feature Fusion (AWFF) framework.
+- Combine TF-IDF, aspect proximity, sentiment intensity, negation, contextual, and Reddit-specific features.
+- Implement and compare baseline and proposed classification models.
+- Evaluate model performance using standard classification metrics.
 
-Traditional sentiment analysis generally classifies an entire comment as positive, negative, or neutral. However, a single Reddit comment may discuss multiple aspects with different opinions.
+## ⚙️ Proposed Methodology
 
-This project addresses this limitation by identifying relevant aspects and using contextual, linguistic, and sentiment-based information to improve sentiment classification.
+The project follows these major stages:
 
-## 3. Objectives
+1. **Dataset Input:** Load Reddit discussion data from the CSV dataset.
+2. **Text Preprocessing:** Clean and normalize textual data.
+3. **Aspect Extraction:** Identify important aspects using NLP techniques.
+4. **Feature Extraction:** Extract TF-IDF and linguistic features.
+5. **AWFF Feature Fusion:** Combine multiple feature groups into a unified representation.
+6. **Model Training:** Train baseline and proposed models.
+7. **Evaluation:** Measure model performance using classification metrics.
+8. **Visualization:** Analyze model performance and sentiment predictions.
 
-- Perform sentiment analysis on Reddit gaming discussions.
-- Identify relevant aspects from user comments.
-- Extract meaningful textual and linguistic features.
-- Develop an Aspect-Weighted Feature Fusion (AWFF) approach.
-- Compare traditional Machine Learning and Deep Learning models.
-- Evaluate baseline models against AWFF-enhanced models.
+## 🧠 Aspect-Weighted Feature Fusion (AWFF)
 
-## 4. Dataset Description
+The proposed AWFF framework combines six feature groups:
 
-The project uses a Reddit gaming comments dataset.
-
-| Description | Details |
+| Feature | Description |
 |---|---|
-| Dataset file | `gaming_comments.csv` |
-| Total records | 23,189 |
-| Text column | Comment |
-| Target column | sentiment |
-| Number of classes | 3 |
+| TF-IDF | Identifies important terms in the comments. |
+| Aspect Proximity | Captures the relationship between aspects and nearby sentiment words. |
+| Sentiment Intensity | Measures the strength of sentiment expressions. |
+| Negation Handling | Identifies negation words such as not, never, and no. |
+| Contextual Features | Captures surrounding words and linguistic context. |
+| Reddit-Specific Features | Handles slang, emojis, abbreviations, and informal expressions. |
 
-### Sentiment Distribution
+## 🤖 Models Implemented
 
-| Sentiment | Number of records |
-|---|---:|
-| Positive | 10,034 |
-| Neutral | 9,083 |
-| Negative | 4,072 |
-| **Total** | **23,189** |
-
-The dataset contains three sentiment categories: Positive, Neutral, and Negative.
-
-## 5. Methodology
-
-The project follows the following processing pipeline:
-
-1. **Data Preprocessing**
-   - Remove URLs and unnecessary characters.
-   - Convert text into lowercase.
-   - Clean and normalize Reddit comments.
-
-2. **Aspect Extraction**
-   - Use spaCy for Part-of-Speech tagging.
-   - Extract noun phrases as candidate aspects.
-   - Consider surrounding context for aspect-related information.
-
-3. **Feature Extraction**
-   - TF-IDF textual features.
-   - VADER sentiment features.
-   - Negation-related features.
-   - Reddit linguistic features.
-   - Additional numerical features.
-
-4. **Aspect-Weighted Feature Fusion (AWFF)**
-
-   The proposed AWFF approach combines TF-IDF textual representations with 17 numerical and linguistic features to provide additional information for sentiment classification.
-
-5. **Model Training**
-
-   Train and compare traditional Machine Learning and Deep Learning models.
-
-6. **Model Evaluation**
-
-   Evaluate model performance using accuracy, precision, recall, F1-score, and Macro-F1 score.
-
-## 6. Algorithms Implemented
-
-The project evaluates four algorithms using baseline and AWFF-enhanced approaches.
-
-### Machine Learning Models
-- Naive Bayes
+### Baseline Models
+- Multinomial Naive Bayes
 - Logistic Regression
 
-### Deep Learning Models
+### Proposed Models
 - Recurrent Neural Network (RNN)
 - Long Short-Term Memory (LSTM)
 
-## 7. Experimental Results
+## 📊 Evaluation Metrics
 
-The following table compares baseline accuracy with AWFF-enhanced accuracy.
+The models are evaluated using:
 
-| Model | Baseline Accuracy | AWFF Accuracy | AWFF Macro-F1 |
-|---|---:|---:|---:|
-| Naive Bayes | 51.46% | 58.16% | 55.62% |
-| Logistic Regression | 53.85% | 61.27% | 58.24% |
-| RNN | 49.75% | 67.63% | 65.08% |
-| LSTM | 53.32% | **68.51%** | **65.73%** |
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Macro F1-Score
+- Confusion Matrix
 
-### Best Performing Model
+## 🛠️ Technologies Used
 
-The LSTM model with Aspect-Weighted Feature Fusion achieved the best overall accuracy.
+- **Programming Language:** Python
+- **NLP:** spaCy, NLTK
+- **Feature Extraction:** TF-IDF
+- **Sentiment Analysis:** VADER, TextBlob
+- **Machine Learning:** Scikit-learn
+- **Deep Learning:** TensorFlow / Keras
+- **Data Processing:** Pandas, NumPy
+- **Visualization:** Matplotlib, Seaborn
+- **Development Environment:** Visual Studio Code
+- **Version Control:** Git and GitHub
 
-| Evaluation Metric | Score |
-|---|---:|
-| Accuracy | 68.51% |
-| Precision | 68.59% |
-| Recall | 68.51% |
-| F1-Score | 68.55% |
-| Macro-F1 | 65.73% |
-
-The experimental results indicate that AWFF-enhanced models outperform their corresponding baseline models in accuracy.
-
-## 8. Technologies Used
-
-- Python
-- Machine Learning
-- Deep Learning
-- TensorFlow / Keras
-- Scikit-learn
-- Pandas
-- NumPy
-- spaCy
-- VADER Sentiment Analysis
-- TF-IDF
-
-## 9. Project Structure
+## 📂 Project Structure
 
 ```text
-ABSA_OF_REDDIT/
+ABSA_Project/
 │
-├── models/
-│   ├── awff_numeric_columns.pkl
-│   ├── awff_scaler.pkl
-│   ├── label_encoder.pkl
-│   ├── logistic_regression_awff.pkl
-│   ├── lstm_awff_model.keras
-│   ├── lstm_tf-idf_baseline_model.keras
-│   ├── naive_bayes_awff.pkl
-│   ├── rnn_awff_model.keras
-│   ├── rnn_tf-idf_baseline_model.keras
-│   ├── tfidf_vectorizer.pkl
-│   └── tokenizer.pkl
+├── .venv/                       # Python virtual environment (local)
 │
-├── absa_model_training.py
-├── absa_model_training_v2.py
-├── gaming_comments.csv
-├── .gitignore
-└── README.md
+├── models/                      # Saved trained models
+│
+├── results/                     # Model outputs and evaluation results
+│
+├── .gitignore                   # Files excluded from Git tracking
+│
+├── absa_model_training.py       # Initial model training implementation
+│
+├── absa_model_training_v2.py    # Updated model training implementation
+│
+├── gaming_comments.csv          # Reddit comments dataset
+│
+└── README.md                    # Project documentation
 ```
 
-## 10. Model Training and Execution
+## 🚀 Installation and Execution
 
-### Step 1: Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/sumayaswigit/ABSA_OF_REDDIT.git
+git clone https://github.com/sumayasaswigit/ABSA_OF_REDDIT.git
 ```
 
-### Step 2: Navigate to the project directory
+### 2. Navigate to the Project Directory
 
 ```bash
 cd ABSA_OF_REDDIT
 ```
 
-### Step 3: Create a virtual environment
+### 3. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-### Step 4: Activate the virtual environment
+### 4. Activate the Environment
 
 For Windows:
 
@@ -186,46 +134,69 @@ For Windows:
 .venv\Scripts\activate
 ```
 
-### Step 5: Install the required libraries
+### 5. Install Required Libraries
 
-Install the dependencies used by the project:
-
-```bash
-pip install pandas numpy scikit-learn tensorflow spacy vaderSentiment
-```
-
-### Step 6: Run the training scripts
+Install the dependencies required by the training scripts.
 
 ```bash
-python absa_model_training.py
+pip install pandas numpy scikit-learn matplotlib seaborn nltk spacy vaderSentiment textblob tensorflow
 ```
+
+Additional NLP resources or spaCy language models may need to be installed depending on the implementation.
+
+### 6. Run the Project
+
+To execute the updated training implementation:
 
 ```bash
 python absa_model_training_v2.py
 ```
 
-Note: Use the script corresponding to the experiment you want to reproduce. Check the script configuration and required spaCy language model before execution.
+To execute the initial implementation:
 
-## 11. Research Contribution
+```bash
+python absa_model_training.py
+```
 
-The main contribution of this research is the implementation and evaluation of an Aspect-Weighted Feature Fusion approach that combines textual representations with additional linguistic and sentiment-based features.
+**Note:** The dataset file `gaming_comments.csv` should be available in the project directory when running the scripts. Check the script configuration if a different dataset path is used.
 
-The experiments compare traditional Machine Learning and Deep Learning algorithms under baseline and AWFF-enhanced configurations.
+## 📁 Output
 
-## 12. Future Enhancements
+The project uses the following directories:
 
-- Improve aspect-level sentiment annotation.
-- Explore advanced contextual language models such as BERT.
-- Improve model performance through hyperparameter tuning.
-- Evaluate the approach on additional Reddit datasets.
-- Investigate improved aspect extraction techniques.
+- **models/** – Stores trained model files and related artifacts.
+- **results/** – Stores generated evaluation results, predictions, and visualizations.
 
-## 13. Repository
+The exact output files depend on the training script configuration.
 
-**GitHub:** https://github.com/sumayaswigit/ABSA_OF_REDDIT
+## 🔬 Research Contribution
+
+The project explores an aspect-aware feature fusion framework for sentiment analysis of Reddit discussions.
+
+By combining lexical, aspect-related, sentiment, negation, contextual, and Reddit-specific features, the proposed AWFF approach aims to provide a richer representation for aspect-level sentiment classification.
+
+## ⚠️ Dataset and Annotation Considerations
+
+Aspect-level sentiment labels generated automatically using sentiment lexicons or rule-based methods should be treated as weakly supervised labels rather than human-annotated ground truth.
+
+Reliable aspect-level evaluation requires manually verified reference annotations.
+
+## 🔮 Future Scope
+
+- Incorporating transformer-based models such as BERT and RoBERTa.
+- Improving sarcasm and implicit aspect detection.
+- Exploring advanced aspect extraction techniques.
+- Evaluating the framework on additional Reddit datasets.
+- Developing an interactive dashboard for sentiment visualization.
+
+## 👩‍💻 Project Information
+
+**Project Title:** Aspect-Based Sentiment Analysis of Reddit Discussions Using Aspect-Weighted Feature Fusion (AWFF)
+
+**Domain:** Natural Language Processing and Machine Learning
+
+**Institution:** KL University
+
+**Project Type:** Academic Capstone Project
 
 ---
-
-**Project:** Aspect-Based Sentiment Analysis of Reddit Discussions
-
-**Proposed Approach:** Aspect-Weighted Feature Fusion (AWFF)
